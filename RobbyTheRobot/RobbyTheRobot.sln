@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobbyGeneticAlgo", "RobbyGeneticAlgo\RobbyGeneticAlgo.csproj", "{C3BFCC08-5652-4377-A9A1-BC1E2FE060DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobbyGeneticAlgoUnitTests", "RobbyGeneticAlgoUnitTests\RobbyGeneticAlgoUnitTests.csproj", "{FA87D4C7-CA30-4F54-92DB-95BFA4EE0EBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3BFCC08-5652-4377-A9A1-BC1E2FE060DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3BFCC08-5652-4377-A9A1-BC1E2FE060DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3BFCC08-5652-4377-A9A1-BC1E2FE060DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3BFCC08-5652-4377-A9A1-BC1E2FE060DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA87D4C7-CA30-4F54-92DB-95BFA4EE0EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA87D4C7-CA30-4F54-92DB-95BFA4EE0EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA87D4C7-CA30-4F54-92DB-95BFA4EE0EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA87D4C7-CA30-4F54-92DB-95BFA4EE0EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8FE53B2-977E-41A3-97E7-7F9F6D57111E}
+	EndGlobalSection
+EndGlobal
