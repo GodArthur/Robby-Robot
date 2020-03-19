@@ -24,6 +24,11 @@ namespace RobbyGeneticAlgo
         public int Length
         { get; }
 
+        public Allele[] Gene
+        {
+            get { return gene; }
+        }
+
         /// <summary>
         /// Chromosome constructor initializing 
         /// the array of Alleles
@@ -74,6 +79,36 @@ namespace RobbyGeneticAlgo
 
         public Chromosome[] Reproduce(Chromosome spouse, Crossover f, double mutationRate)
         {
+            //value determines whether or not to mutate
+            double mutate;
+            Chromosome[] children = f(this, spouse);
+
+            //temporary array to store old and mutated values
+            Allele[] temp = new Allele[this.Length];
+            
+            for (int i = 0; i < children.Length; i++)
+            {
+                for (int j = 0; j < children[i].Length; j++)
+                {
+                    mutate = Helpers.rand.NextDouble();
+
+                    //Not sure if it should be less than (<) , or
+                    //Less than or equal to (<=) in the if statement
+                    if (mutate <= mutationRate)
+                    {
+                        temp[j] = (Allele)Helpers.rand.Next(0, this.Length);
+                    }
+                    else
+                    {
+                        temp[j] = children[i][j]; 
+                    }
+                }
+
+                children[i] = new Chromosome(temp);
+            }
+
+            return children;
+
 
         }
         
@@ -118,7 +153,7 @@ namespace RobbyGeneticAlgo
             Allele[] secondSet = new Allele[a.Length];
 
             //number at which splits the two chromosomes
-            int split = Helpers.rand.Next(0, a.Length - 1);
+            int split = Helpers.rand.Next(0, a.Length);
 
             //setting first set of allele
             for (int i = 0; i < firstSet.Length; i++)
@@ -162,8 +197,8 @@ namespace RobbyGeneticAlgo
             Allele[] secondSet = new Allele[a.Length];
 
             //choosing the first and second halfway random points
-            int half1 = Helpers.rand.Next(0, (a.Length / 2) - 1);
-            int half2 = Helpers.rand.Next(a.Length / 2, a.Length - 1);
+            int half1 = Helpers.rand.Next(0, (a.Length / 2));
+            int half2 = Helpers.rand.Next(a.Length / 2, a.Length);
 
 
             //storing the first set of allele
