@@ -24,10 +24,6 @@ namespace RobbyGeneticAlgo
         public int Length
         { get; }
 
-        public Allele[] Gene
-        {
-            get { return gene; }
-        }
 
         /// <summary>
         /// Chromosome constructor initializing 
