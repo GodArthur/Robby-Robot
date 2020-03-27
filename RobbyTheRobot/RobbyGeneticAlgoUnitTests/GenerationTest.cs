@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RobbyGeneticAlgoUnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class GenerationTest
     {
         [TestMethod]
         public void TestMethod1()

@@ -20,6 +20,7 @@ namespace GeneticAlgo
         /// <summary>
         /// Staring point of the Console application
         /// </summary>
+        /*
         public static void Main()
         {
             RobbyRobotProblem robby = new RobbyRobotProblem(4000, 200, Helpers.ScoreForAllele);
@@ -207,5 +208,6 @@ namespace GeneticAlgo
             while (!done);
             return 0;
         }
+        */
     }
 }

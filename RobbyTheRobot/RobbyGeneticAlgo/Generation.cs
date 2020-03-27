@@ -65,6 +65,7 @@ namespace RobbyGeneticAlgo
             Array.Reverse(population);
         }
 
+
         /// <summary>
         /// method is used to select a parent for the next generation
         /// </summary>
@@ -80,6 +81,7 @@ namespace RobbyGeneticAlgo
 
             return population[Min(index)];
         }
+
 
         /// <summary>
         /// Method finds the smallest elements index in an int array
