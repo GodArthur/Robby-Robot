@@ -21,6 +21,7 @@ namespace RobbyGeneticAlgo
             get; private set;
         }
         
+        //Length of Allele array
         public int Length
         { get; }
 
@@ -48,12 +49,15 @@ namespace RobbyGeneticAlgo
             }
         }
 
+
+
         /// <summary>
         /// Constructor makes a deep copy values of gene array
         /// </summary>
         /// <param name="gene">Array of alleles</param>
         public Chromosome(Allele[] gene)
         {
+            this.Length = gene.Length;
             Allele[] temp = new Allele[gene.Length];
 
             for (int i = 0; i < gene.Length; i++)
@@ -64,6 +68,8 @@ namespace RobbyGeneticAlgo
             this.gene = gene;
         }
 
+
+
         /// <summary>
         /// indexer on array of Alleles.
         /// returns allele on the index
@@ -72,6 +78,8 @@ namespace RobbyGeneticAlgo
         /// <returns></returns>
         public Allele this[int index]
         { get { return gene[index]; } }
+
+
 
         public Chromosome[] Reproduce(Chromosome spouse, Crossover f, double mutationRate)
         {
@@ -82,15 +90,16 @@ namespace RobbyGeneticAlgo
             //temporary array to store old and mutated values
             Allele[] temp = new Allele[this.Length];
             
+            //iterrating through every child
             for (int i = 0; i < children.Length; i++)
             {
                 for (int j = 0; j < children[i].Length; j++)
                 {
+                    //Assigning the value for whether or not we should mutate
                     mutate = Helpers.rand.NextDouble();
 
-                    //Not sure if it should be less than (<) , or
-                    //Less than or equal to (<=) in the if statement
-                    if (mutate <= mutationRate)
+                    //Checking if mutation should happen
+                    if (mutate < mutationRate)
                     {
                         temp[j] = (Allele)Helpers.rand.Next(0, this.Length);
                     }
@@ -104,8 +113,6 @@ namespace RobbyGeneticAlgo
             }
 
             return children;
-
-
         }
         
         public void EvalFitness(Fitness f)
@@ -137,9 +144,10 @@ namespace RobbyGeneticAlgo
             return content;
         }
 
+
         public int CompareTo(Chromosome c)
         {
-            return (int)(this.Fitness - c.Fitness);
+            return (this.Fitness.CompareTo(c.Fitness));
         }
 
         public Chromosome[] SingleCrossover(Chromosome a, Chromosome b)
@@ -236,6 +244,55 @@ namespace RobbyGeneticAlgo
 
             Chromosome[] children = new Chromosome[2];
 
+            children[0] = new Chromosome(firstSet);
+            children[1] = new Chromosome(secondSet);
+
+            return children;
+        }
+
+       
+        /// <summary>
+        /// Method to have a consistent single crossover point
+        /// Only used for testing purposes
+        /// </summary>
+        public Chromosome[] ConstantCrossover(Chromosome a, Chromosome b)
+        {
+            //declaring the new subset of offspring allele
+            Allele[] firstSet = new Allele[a.Length];
+            Allele[] secondSet = new Allele[a.Length];
+
+            //Controlled Chrossover point
+            int split = 4;
+
+            //setting first set of allele
+            for (int i = 0; i < firstSet.Length; i++)
+            {
+                if (i <= split)
+                {
+                    firstSet[i] = a[i];
+                }
+                else
+                {
+                    firstSet[i] = b[i];
+                }
+            }
+
+            //setting the second set of allele
+            for (int i = 0; i < secondSet.Length; i++)
+            {
+                if (i <= split)
+                {
+                    secondSet[i] = b[i];
+                }
+                else
+                {
+                    secondSet[i] = a[i];
+                }
+            }
+
+            Chromosome[] children = new Chromosome[2];
+
+            //storing the newly created chromosomes
             children[0] = new Chromosome(firstSet);
             children[1] = new Chromosome(secondSet);
 

@@ -5,13 +5,20 @@ using GeneticAlgo;
 
 namespace RobbyGeneticAlgo
 {
-    class Generation
+    public class Generation
     {
 
         Chromosome[] population;
 
+
+        /// <summary>
+        /// Constructor populates an array of random Chromosomes
+        /// </summary>
+        /// <param name="populationSize">amount of Chromosomes</param>
+        /// <param name="numGenes">Specified length to initialize Chromosomes</param>
         public Generation(int populationSize, int numGenes)
         {
+
             population = new Chromosome[populationSize];
 
             for (int i = 0; i < populationSize; i++)
@@ -31,10 +38,13 @@ namespace RobbyGeneticAlgo
             population = new Chromosome[members.Length];
             Allele[] temp;
 
+            //iterating through every chromosome
             for (int i = 0; i < members.Length; i++)
             {
+                //setting the length of the allele array
                 temp = new Allele[members[i].Length];
 
+                //iterating through the alleles of chromosome at index i
                 for (int j = 0; j < members[i].Length; j++)
                 {
                     temp[j] = members[i][j];   
@@ -65,6 +75,7 @@ namespace RobbyGeneticAlgo
             Array.Reverse(population);
         }
 
+
         /// <summary>
         /// method is used to select a parent for the next generation
         /// </summary>
@@ -80,6 +91,7 @@ namespace RobbyGeneticAlgo
 
             return population[Min(index)];
         }
+
 
         /// <summary>
         /// Method finds the smallest elements index in an int array
@@ -99,6 +111,16 @@ namespace RobbyGeneticAlgo
             }
 
             return index;
+        }
+
+        /// <summary>
+        /// Method retrieves population
+        /// For testing purposes only
+        /// </summary>
+        /// <returns>Chromosome population</returns>
+        public Chromosome[] GetPopulation()
+        {
+            return population;
         }
 
 
