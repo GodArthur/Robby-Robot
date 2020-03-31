@@ -37,7 +37,7 @@ namespace RobbyGeneticAlgo
 
             for (int i = 0; i < numGenerations; i++)
             {
-                g.EvalFitness
+                //g.EvalFitness
             }
         }
         

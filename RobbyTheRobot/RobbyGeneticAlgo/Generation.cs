@@ -72,7 +72,7 @@ namespace RobbyGeneticAlgo
 
             //Sorts the array based on the highest fitness
             Array.Sort(population);
-            Array.Reverse(population);
+            //Array.Reverse(population);
         }
 
 
@@ -123,6 +123,19 @@ namespace RobbyGeneticAlgo
             return population;
         }
 
+        /// <summary>
+        /// Random Fitness method used to
+        /// give chromosomes a random fitness
+        /// Used For testing purposes exclusively
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public double RandomChromosomeFitness(Chromosome c)
+        {
+            c.EvalFitness(c.RandomFitness);
+
+            return 0;
+        }
 
     }
 }

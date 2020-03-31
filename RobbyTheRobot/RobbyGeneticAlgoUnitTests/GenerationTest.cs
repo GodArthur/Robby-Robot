@@ -101,9 +101,68 @@ namespace RobbyGeneticAlgoUnitTests
         }
 
         [TestMethod]
-        public void testCon()
+        public void TestEvalFitness()
         {
+            Chromosome[] c = new Chromosome[10];
 
+            for (int i = 0; i < c.Length; i++)
+            {
+                c[i] = new Chromosome(10);
+            }
+            Generation g = new Generation(c);
+
+            g.EvalFitness(g.RandomChromosomeFitness);
+
+            bool sortedDescending = true;
+
+            for (int i = 0; i < g.GetPopulation().Length; i++)
+            {
+                if (i + 1 != g.GetPopulation().Length)
+                {
+                    if (g[i].Fitness < g[i + 1].Fitness)
+                    {
+                        sortedDescending = false;
+                        break;
+                    }
+                }
+            }
+
+            Assert.IsTrue(sortedDescending);
+        }
+
+        [TestMethod]
+        public void TestSelectParent()
+        {
+            //Choosing a population of size 10 to know which 10
+            //chromosomes the index is choosing from
+           
+            Generation g = new Generation(10, 7);
+
+            g.EvalFitness(g.RandomChromosomeFitness);
+
+            Chromosome test = g.SelectParent();
+
+            bool highestFitness = true;
+
+            //finding elem with largest fitness
+            //to compare the value returned by SelectParent()
+
+            int index = 0;
+
+            for (int i = 0; i < g.GetPopulation().Length; i++)
+            {
+                if (g[index].Fitness < g[i].Fitness)
+                {
+                    index = i;
+                }
+            }
+
+            if (test != g[index])
+            {
+                highestFitness = false;
+            }
+
+            Assert.IsTrue(highestFitness);
         }
     }
 }

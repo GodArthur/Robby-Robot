@@ -147,7 +147,7 @@ namespace RobbyGeneticAlgo
 
         public int CompareTo(Chromosome c)
         {
-            return (this.Fitness.CompareTo(c.Fitness));
+            return (c.Fitness.CompareTo(this.Fitness));
         }
 
         public Chromosome[] SingleCrossover(Chromosome a, Chromosome b)
@@ -297,6 +297,30 @@ namespace RobbyGeneticAlgo
             children[1] = new Chromosome(secondSet);
 
             return children;
+        }
+
+        /// <summary>
+        /// Method provides a constant level of fitness
+        /// to the chromosome
+        /// Testing purposes only
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public double ConstantFitness(Chromosome c)
+        {
+            return 5;
+        }
+
+        /// <summary>
+        /// Method provides a random level of fitness
+        /// to a chromosome
+        /// //Testing purposes only
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public double RandomFitness(Chromosome c)
+        {
+            return Helpers.rand.Next(0, 1000);
         }
     }
 }
