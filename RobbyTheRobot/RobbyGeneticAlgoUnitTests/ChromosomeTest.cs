@@ -27,7 +27,7 @@ namespace RobbyGeneticAlgoUnitTests
 
 
         [TestMethod]
-        public void testConstructorArray()
+        public void TestConstructorArray()
         {
             Allele[] temp = new Allele[] { Allele.North, Allele.South, Allele.East, Allele.West };
             Chromosome c = new Chromosome(temp);
@@ -46,7 +46,7 @@ namespace RobbyGeneticAlgoUnitTests
         }
         
         [TestMethod]
-        public void testIndex()
+        public void TestIndex()
         {
             Allele[] temp = new Allele[] { Allele.East, Allele.North, Allele.Random };
             Chromosome c = new Chromosome(temp);
@@ -55,7 +55,7 @@ namespace RobbyGeneticAlgoUnitTests
         }
 
         [TestMethod]
-        public void testEvalFitness()
+        public void TestEvalFitness()
         {
             Chromosome c = new Chromosome(4);
         }
@@ -174,7 +174,7 @@ namespace RobbyGeneticAlgoUnitTests
         }
 
         [TestMethod]
-        public void testDoubleCrossover()
+        public void TestDoubleCrossover()
         {
             Chromosome a = new Chromosome(10);
             Chromosome b = new Chromosome(10);
@@ -311,7 +311,7 @@ namespace RobbyGeneticAlgoUnitTests
         }
 
         [TestMethod]
-        public void testReproduce()
+        public void TestReproduce()
         {
             Chromosome a = new Chromosome(10);
             Chromosome b = new Chromosome(10);
@@ -380,7 +380,7 @@ namespace RobbyGeneticAlgoUnitTests
         }
 
         [TestMethod]
-        public void testToString()
+        public void TestToString()
         {
             Chromosome c = new Chromosome(new Allele[]{Allele.North, Allele.South, Allele.East, Allele.West});
 
@@ -391,7 +391,7 @@ namespace RobbyGeneticAlgoUnitTests
 
 
         [TestMethod]
-        public void testCompareTo()
+        public void TestCompareTo()
         {
 
         }

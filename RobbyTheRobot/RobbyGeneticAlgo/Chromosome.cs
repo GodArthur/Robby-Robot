@@ -5,7 +5,7 @@ namespace RobbyGeneticAlgo
 {
     public delegate double Fitness(Chromosome c);
 
-    //public delegate int AlleleMoveAndFitness(Chromosome c, Contents[,] grid, ref int x, ref int y);
+    public delegate int AlleleMoveAndFitness(Chromosome c, Contents[,] grid, ref int x, ref int y);
 
     public delegate Chromosome[] Crossover(Chromosome a, Chromosome b);
 
