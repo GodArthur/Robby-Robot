@@ -87,14 +87,23 @@ namespace RobbyGeneticAlgo
             double mutate;
             Chromosome[] children = f(this, spouse);
 
+<<<<<<< HEAD
            
+=======
+            //temporary array to store old and mutated values
+            
+>>>>>>> 7547a794ce1a7de617cfef44f70c9dc56f4055da
             
             //iterrating through every child
             for (int i = 0; i < children.Length; i++)
             {
+<<<<<<< HEAD
                 //temporary array to store old and mutated values
                 Allele[] temp = new Allele[this.Length];
 
+=======
+                Allele[] temp = new Allele[this.Length];
+>>>>>>> 7547a794ce1a7de617cfef44f70c9dc56f4055da
                 for (int j = 0; j < children[i].Length; j++)
                 {
                     //Assigning the value for whether or not we should mutate
