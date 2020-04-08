@@ -87,12 +87,14 @@ namespace RobbyGeneticAlgo
             double mutate;
             Chromosome[] children = f(this, spouse);
 
-            //temporary array to store old and mutated values
-            Allele[] temp = new Allele[this.Length];
+           
             
             //iterrating through every child
             for (int i = 0; i < children.Length; i++)
             {
+                //temporary array to store old and mutated values
+                Allele[] temp = new Allele[this.Length];
+
                 for (int j = 0; j < children[i].Length; j++)
                 {
                     //Assigning the value for whether or not we should mutate
@@ -101,7 +103,7 @@ namespace RobbyGeneticAlgo
                     //Checking if mutation should happen
                     if (mutate < mutationRate)
                     {
-                        temp[j] = (Allele)Helpers.rand.Next(0, this.Length);
+                        temp[j] = (Allele)Helpers.rand.Next(0, Enum.GetNames(typeof(Allele)).Length);
                     }
                     else
                     {
