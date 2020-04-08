@@ -101,7 +101,7 @@ namespace RobbyGeneticAlgo
                     //Checking if mutation should happen
                     if (mutate < mutationRate)
                     {
-                        temp[j] = (Allele)Helpers.rand.Next(0, this.Length);
+                        temp[j] = (Allele)Helpers.rand.Next(0, Enum.GetNames(typeof(Allele)).Length);
                     }
                     else
                     {
