@@ -64,7 +64,6 @@ namespace RobbyGeneticAlgo
 
         public void EvalFitness(Fitness f)
         {
-            
             foreach (Chromosome member in population)
             {
                 member.EvalFitness(f);

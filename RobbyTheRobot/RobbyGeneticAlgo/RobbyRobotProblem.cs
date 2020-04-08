@@ -42,7 +42,7 @@ namespace RobbyGeneticAlgo
             for (int i = 0; i < numGenerations; i++)
             {
                 this.EvalFitness(this.RobbyFitness);
-                this.GenerationReplaced(i, this.currentG);
+                this.GenerationReplaced(i + 1, this.currentG);
                 this.generateNextGeneration();
             }
         }
@@ -67,13 +67,15 @@ namespace RobbyGeneticAlgo
 
             Chromosome firstParent = this.currentG.SelectParent();
             Chromosome secondParent = this.currentG.SelectParent();
+            int indexerForGen = (int)(this.eliteRate * this.popSize);
 
-            for(int i = (int)(this.eliteRate * this.popSize); i < newGen.Length; i+=2)
+            for (int i = (int)(this.eliteRate * this.popSize); i < newGen.Length; i++)
             {
                 Chromosome[] mutated = firstParent.Reproduce(secondParent, firstParent.DoubleCrossover, this.mutationRate);
                 for (int j = 0; j < mutated.Length; j++)
                 {
-                    newGen[(int)(this.eliteRate * this.popSize)] = mutated[j];
+                    newGen[i] = mutated[j];
+                    indexerForGen++;  
                 }
             }
 
