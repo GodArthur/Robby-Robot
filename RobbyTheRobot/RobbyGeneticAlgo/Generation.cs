@@ -67,7 +67,7 @@ namespace RobbyGeneticAlgo
             
             foreach (Chromosome member in population)
             {
-                f(member);
+                member.EvalFitness(f);
             }
 
             //Sorts the array based on the highest fitness
