@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RobbyGeneticAlgo;
 
 namespace GeneticAlgo
 {
@@ -20,25 +21,55 @@ namespace GeneticAlgo
         /// <summary>
         /// Staring point of the Console application
         /// </summary>
-        /*
+
         public static void Main()
         {
             RobbyRobotProblem robby = new RobbyRobotProblem(4000, 200, Helpers.ScoreForAllele);
             //TODO subscribe to the RobbyRobotProblem’s GenerationReplaced event with the 
             // Display and the Print methods
+            robby.GenerationEvent += Helpers.Display;
+            robby.GenerationEvent += Helpers.Print;
             robby.Start();
 
         }
 
-        /// <summary>
-        /// TODO Add a Display method
-        /// </summary>
+        //Custom Method
 
+        public static void Display(int num, Generation gen)
+        {
+            Console.WriteLine("Generation number " + num + " has max fitness of: " + gen[0].Fitness);
 
-        /// <summary>
-        /// TODO Add a Print method
-        /// </summary>
+        }
 
+        // Custom Method
+
+        public static void Print(int num, Generation gen)
+        {
+            if(num == 1)
+            { 
+                File.WriteAllText("./Gen1.txt", gen[0].ToString());
+            }
+            else if(num == 20)
+            {
+                File.WriteAllText("./Gen20.txt", gen[0].ToString());
+            }
+            else if(num == 100)
+            {
+                File.WriteAllText("./Gen100.txt", gen[0].ToString());
+            }
+            else if(num == 200)
+            {
+                File.WriteAllText("./Gen200.txt", gen[0].ToString());
+            }
+            else if(num == 500)
+            {
+                File.WriteAllText("./Gen500.txt", gen[0].ToString());
+            }
+            else if(num == 1000)
+            {
+                File.WriteAllText("./Gen1000.txt", gen[0].ToString());
+            }
+        }
 
         /// <summary>
         /// Applies the fitness function to move Robby through the given testgrid for numActions moves based on the
@@ -136,6 +167,7 @@ namespace GeneticAlgo
             return (int)(2 * Math.Pow(3, power));
         }
         /// <summary>
+        /// CUSTOM METHOD
         /// Used to generate a single test grid filled with cans in random locations. Half of 
         /// the grid (rounded down) will be filled with cans.
         /// </summary>
@@ -143,7 +175,29 @@ namespace GeneticAlgo
         /// <returns>Rectangular array of Contents filled with 50% Cans, and 50% Empty </returns>
         public static Contents[,] GenerateRandomTestGrid(int gridSize)
         {
-            ///TODO
+            Contents[,] testGrid = new Contents[gridSize, gridSize];
+            int numOfCans = testGrid.Length / 2;
+            int numOfEmpty = testGrid.Length - numOfCans;
+
+            for(int i = 0; i < testGrid.GetLength(0); i++)
+            {
+                for(int j = 0; j < testGrid.GetLength(1); j++)
+                {
+                    int num = Helpers.rand.Next(0, 2);
+                    if(num == 0 && numOfEmpty > 0)
+                    {
+                        testGrid[i, j] = (Contents)num;
+                        numOfEmpty--;
+                    }
+                    else if(num == 1 && numOfCans > 0)
+                    {
+                        testGrid[i, j] = (Contents)num;
+                        numOfCans--;
+                    }
+                }
+            }
+
+            return testGrid;
         }
 
         /// <summary>
@@ -208,6 +262,6 @@ namespace GeneticAlgo
             while (!done);
             return 0;
         }
-        */
+        
     }
 }
