@@ -88,11 +88,12 @@ namespace RobbyGeneticAlgo
             Chromosome[] children = f(this, spouse);
 
             //temporary array to store old and mutated values
-            Allele[] temp = new Allele[this.Length];
+            
             
             //iterrating through every child
             for (int i = 0; i < children.Length; i++)
             {
+                Allele[] temp = new Allele[this.Length];
                 for (int j = 0; j < children[i].Length; j++)
                 {
                     //Assigning the value for whether or not we should mutate

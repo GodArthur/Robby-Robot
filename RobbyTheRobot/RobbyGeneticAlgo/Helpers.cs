@@ -47,27 +47,27 @@ namespace GeneticAlgo
         {
             if(num == 1)
             { 
-                File.WriteAllText("./Gen1.txt", gen[0].ToString());
+                File.WriteAllText("../../GenOutputs/Gen1.txt", gen[0].ToString());
             }
             else if(num == 20)
             {
-                File.WriteAllText("./Gen20.txt", gen[0].ToString());
+                File.WriteAllText("../../GenOutputs/Gen20.txt", gen[0].ToString());
             }
             else if(num == 100)
             {
-                File.WriteAllText("./Gen100.txt", gen[0].ToString());
+                File.WriteAllText("../../GenOutputs/Gen100.txt", gen[0].ToString());
             }
             else if(num == 200)
             {
-                File.WriteAllText("./Gen200.txt", gen[0].ToString());
+                File.WriteAllText("../../GenOutputs/Gen200.txt", gen[0].ToString());
             }
             else if(num == 500)
             {
-                File.WriteAllText("./Gen500.txt", gen[0].ToString());
+                File.WriteAllText("../../GenOutputs/Gen500.txt", gen[0].ToString());
             }
             else if(num == 1000)
             {
-                File.WriteAllText("./Gen1000.txt", gen[0].ToString());
+                File.WriteAllText("../../GenOutputs/Gen1000.txt", gen[0].ToString());
             }
         }
 
