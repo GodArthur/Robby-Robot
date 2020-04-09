@@ -69,6 +69,10 @@ namespace GeneticAlgo
             {
                 File.WriteAllText("../../GenOutputs/Gen1000.txt", gen[0].ToString());
             }
+            else if(num == 4000)
+            {
+                Console.ReadLine();
+            }
         }
 
         /// <summary>

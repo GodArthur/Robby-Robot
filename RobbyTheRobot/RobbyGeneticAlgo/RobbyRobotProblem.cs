@@ -69,12 +69,12 @@ namespace RobbyGeneticAlgo
             Chromosome secondParent = this.currentG.SelectParent();
             int indexerForGen = (int)(this.eliteRate * this.popSize);
 
-            for (int i = (int)(this.eliteRate * this.popSize); i < newGen.Length; i++)
+            while(indexerForGen < this.popSize)
             {
                 Chromosome[] mutated = firstParent.Reproduce(secondParent, firstParent.DoubleCrossover, this.mutationRate);
                 for (int j = 0; j < mutated.Length; j++)
                 {
-                    newGen[i] = mutated[j];
+                    newGen[indexerForGen] = mutated[j];
                     indexerForGen++;  
                 }
             }
