@@ -87,23 +87,14 @@ namespace RobbyGeneticAlgo
             double mutate;
             Chromosome[] children = f(this, spouse);
 
-<<<<<<< HEAD
-           
-=======
-            //temporary array to store old and mutated values
-            
->>>>>>> 7547a794ce1a7de617cfef44f70c9dc56f4055da
             
             //iterrating through every child
             for (int i = 0; i < children.Length; i++)
             {
-<<<<<<< HEAD
+
                 //temporary array to store old and mutated values
                 Allele[] temp = new Allele[this.Length];
 
-=======
-                Allele[] temp = new Allele[this.Length];
->>>>>>> 7547a794ce1a7de617cfef44f70c9dc56f4055da
                 for (int j = 0; j < children[i].Length; j++)
                 {
                     //Assigning the value for whether or not we should mutate
@@ -219,11 +210,11 @@ namespace RobbyGeneticAlgo
             //storing the first set of allele
             for (int i = 0; i < firstSet.Length; i++)
             {
-                if (i <= half1)
-                {
-                    firstSet[i] = a[i];
-                }
-                else if (i > half1 && i <= half2)
+                //if (i <= half1)
+                //{
+                //    firstSet[i] = a[i];
+                //}
+                if (i > half1 && i <= half2)
                 {
                     firstSet[i] = b[i];
                 }
@@ -238,11 +229,11 @@ namespace RobbyGeneticAlgo
             //storing the second set of allele
             for (int i = 0; i < secondSet.Length; i++)
             {
-                if (i <= half1)
-                {
-                    secondSet[i] = b[i];
-                }
-                else if (i > half1 && i <= half2)
+                //if (i <= half1)
+                //{
+                //    secondSet[i] = b[i];
+                //}
+                if (i > half1 && i <= half2)
                 {
                     secondSet[i] = a[i];
                 }

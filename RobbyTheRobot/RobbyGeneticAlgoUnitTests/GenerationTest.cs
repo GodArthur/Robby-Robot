@@ -142,22 +142,26 @@ namespace RobbyGeneticAlgoUnitTests
 
             Chromosome test = g.SelectParent();
 
-            bool highestFitness = true;
+            bool highestFitness;
 
             //finding elem with largest fitness
             //to compare the value returned by SelectParent()
 
-            int index = 0;
+           // int index = 0;
 
-            for (int i = 0; i < g.GetPopulation().Length; i++)
+           /* for (int i = 0; i < g.GetPopulation().Length; i++)
             {
                 if (g[index].Fitness < g[i].Fitness)
                 {
                     index = i;
                 }
-            }
+            }*/
 
-            if (test != g[index])
+            if (test.Fitness == g[0].Fitness)
+            {
+                highestFitness = true;
+            }
+            else
             {
                 highestFitness = false;
             }

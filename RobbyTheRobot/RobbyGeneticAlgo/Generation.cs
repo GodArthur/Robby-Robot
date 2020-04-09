@@ -87,7 +87,7 @@ namespace RobbyGeneticAlgo
             {
                 index[i] = Helpers.rand.Next(0, population.Length);
             }
-
+            //return population[0];
             return population[Min(index)];
         }
 
@@ -131,9 +131,7 @@ namespace RobbyGeneticAlgo
         /// <returns></returns>
         public double RandomChromosomeFitness(Chromosome c)
         {
-            c.EvalFitness(c.RandomFitness);
-
-            return 0;
+            return Helpers.rand.Next(0, 1000);
         }
 
     }
