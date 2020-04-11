@@ -152,7 +152,7 @@ namespace RobbyGeneticAlgo
             return (c.Fitness.CompareTo(this.Fitness));
         }
 
-        public Chromosome[] SingleCrossover(Chromosome a, Chromosome b)
+        public static Chromosome[] SingleCrossover(Chromosome a, Chromosome b)
         {
             //declaring the new subset of offspring allele
             Allele[] firstSet = new Allele[a.Length];
@@ -196,7 +196,7 @@ namespace RobbyGeneticAlgo
             return children;
         }
 
-        public Chromosome[] DoubleCrossover(Chromosome a, Chromosome b)
+        public static Chromosome[] DoubleCrossover(Chromosome a, Chromosome b)
         {
             //declaring the new subset of offspring allele
             Allele[] firstSet = new Allele[a.Length];
@@ -257,7 +257,7 @@ namespace RobbyGeneticAlgo
         /// Method to have a consistent single crossover point
         /// Only used for testing purposes
         /// </summary>
-        public Chromosome[] ConstantCrossover(Chromosome a, Chromosome b)
+        public static Chromosome[] ConstantCrossover(Chromosome a, Chromosome b)
         {
             //declaring the new subset of offspring allele
             Allele[] firstSet = new Allele[a.Length];
@@ -308,7 +308,7 @@ namespace RobbyGeneticAlgo
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public double ConstantFitness(Chromosome c)
+        public static double ConstantFitness(Chromosome c)
         {
             return 5;
         }
