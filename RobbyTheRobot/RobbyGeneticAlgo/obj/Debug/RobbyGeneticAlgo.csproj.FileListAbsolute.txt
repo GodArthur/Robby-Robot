@@ -8,7 +8,6 @@ D:\GitProjects\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.p
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.exe.config
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.exe
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.pdb
-C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.csprojAssemblyReference.cache
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.csproj.CoreCompileInputs.cache
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.exe
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.pdb
