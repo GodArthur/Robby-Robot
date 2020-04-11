@@ -59,7 +59,7 @@ namespace RobbyGeneticAlgoUnitTests
         {
             Chromosome c = new Chromosome(5);
 
-            c.EvalFitness(c.ConstantFitness);
+            c.EvalFitness(Chromosome.ConstantFitness);
 
             Assert.AreEqual(5.0, c.Fitness);
         }
@@ -72,8 +72,8 @@ namespace RobbyGeneticAlgoUnitTests
             Chromosome a = new Chromosome(10);
             Chromosome b = new Chromosome(10);
 
-            Chromosome test = new Chromosome(10);
-            Chromosome[] arr = test.SingleCrossover(a, b);
+            //Chromosome test = new Chromosome(10);
+            Chromosome[] arr = Chromosome.SingleCrossover(a, b);
 
             Chromosome child1 = arr[0];
             Chromosome child2 = arr[1];
@@ -183,8 +183,8 @@ namespace RobbyGeneticAlgoUnitTests
             Chromosome a = new Chromosome(10);
             Chromosome b = new Chromosome(10);
 
-            Chromosome test = new Chromosome(10);
-            Chromosome[] arr = test.DoubleCrossover(a, b);
+            //Chromosome test = new Chromosome(10);
+            Chromosome[] arr = Chromosome.DoubleCrossover(a, b);
 
             Chromosome child1 = arr[0];
             Chromosome child2 = arr[1];
@@ -320,7 +320,7 @@ namespace RobbyGeneticAlgoUnitTests
             Chromosome a = new Chromosome(10);
             Chromosome b = new Chromosome(10);
 
-            Chromosome[] c = a.Reproduce(b, a.ConstantCrossover, 1);
+            Chromosome[] c = a.Reproduce(b, Chromosome.ConstantCrossover, 1);
 
             bool isMutatedChild1 = false;
             bool isMutatedChild2 = false;
