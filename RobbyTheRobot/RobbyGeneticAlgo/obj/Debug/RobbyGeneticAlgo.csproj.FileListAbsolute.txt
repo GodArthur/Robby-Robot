@@ -11,3 +11,4 @@ C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\R
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.csproj.CoreCompileInputs.cache
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.exe
 C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.pdb
+C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.csprojAssemblyReference.cache
