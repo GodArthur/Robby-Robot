@@ -32,9 +32,12 @@ namespace Game1
             // TODO: Add your initialization logic here
             robbySprite = new SimulationSprite(this);
             Components.Add(robbySprite);
+            graphics.PreferredBackBufferHeight = 500;
+            graphics.PreferredBackBufferWidth = 500;
+            graphics.ApplyChanges();
 
 
-            
+
             base.Initialize();
         }
 
@@ -47,7 +50,7 @@ namespace Game1
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //canSprite = Content.Load<Texture2D>("can");
+            
 
             // TODO: use this.Content to load your game content here
         }
@@ -82,12 +85,10 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.LightCoral);
 
 
-            /*spriteBatch.Begin();
-            spriteBatch.Draw(canSprite, new Vector2(0, 0), Color.White);
-            spriteBatch.End();*/
+            
 
             // TODO: Add your drawing code here
 
