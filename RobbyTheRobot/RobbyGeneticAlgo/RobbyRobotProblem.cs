@@ -41,10 +41,9 @@ namespace RobbyGeneticAlgo
             this.currentG = new Generation(this.popSize, this.numGenes);
             for (int i = 0; i < numGenerations; i++)
             {
-
                 this.EvalFitness(this.RobbyFitness);
                 this.GenerationReplaced(i + 1, this.currentG);
-                this.generateNextGeneration();
+                this.generateNextGeneration(Chromosome.DoubleCrossover);
             }
         }
 
@@ -58,7 +57,7 @@ namespace RobbyGeneticAlgo
 
         }
 
-        public void generateNextGeneration()
+        public void generateNextGeneration(Crossover c)
         {
             Chromosome[] newGen = new Chromosome[this.popSize];
             for(int i = 0; i < (this.eliteRate * this.popSize); i++)
@@ -66,13 +65,14 @@ namespace RobbyGeneticAlgo
                 newGen[i] = this.currentG[i];
             }
 
-            Chromosome firstParent = this.currentG.SelectParent();
-            Chromosome secondParent = this.currentG.SelectParent();
+            
             int indexerForGen = (int)(this.eliteRate * this.popSize);
 
             while(indexerForGen < this.popSize)
             {
-                Chromosome[] mutated = firstParent.Reproduce(secondParent, firstParent.DoubleCrossover, this.mutationRate);
+                Chromosome firstParent = this.currentG.SelectParent();
+                Chromosome secondParent = this.currentG.SelectParent();
+                Chromosome[] mutated = firstParent.Reproduce(secondParent, c, this.mutationRate);
                 for (int j = 0; j < mutated.Length; j++)
                 {
                     newGen[indexerForGen] = mutated[j];
@@ -89,7 +89,6 @@ namespace RobbyGeneticAlgo
             for(int i = 0; i < this.contents.Length; i++)
             {
                 fitnessOfChro += Helpers.RunRobbyInGrid(this.contents[i], c, this.numActions, Helpers.ScoreForAllele);
-
             }
 
             return fitnessOfChro / this.contents.Length;
