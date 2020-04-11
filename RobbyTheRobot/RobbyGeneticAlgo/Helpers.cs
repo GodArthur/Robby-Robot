@@ -246,7 +246,7 @@ namespace GeneticAlgo
                             return -5;
                         x -= 1;
                         break;
-                    case Allele.Nothing: //do nothong
+                    case Allele.Nothing: //do nothing
                         break;
                     case Allele.PickUp: //pick up can
                         if (grid[x, y] == Contents.Can) //there is a can
