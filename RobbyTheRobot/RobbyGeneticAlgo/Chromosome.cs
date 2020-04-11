@@ -87,13 +87,14 @@ namespace RobbyGeneticAlgo
             double mutate;
             Chromosome[] children = f(this, spouse);
 
-            //temporary array to store old and mutated values
-            
             
             //iterrating through every child
             for (int i = 0; i < children.Length; i++)
             {
+
+                //temporary array to store old and mutated values
                 Allele[] temp = new Allele[this.Length];
+
                 for (int j = 0; j < children[i].Length; j++)
                 {
                     //Assigning the value for whether or not we should mutate
@@ -148,7 +149,7 @@ namespace RobbyGeneticAlgo
 
         public int CompareTo(Chromosome c)
         {
-            return (this.Fitness.CompareTo(c.Fitness));
+            return (c.Fitness.CompareTo(this.Fitness));
         }
 
         public Chromosome[] SingleCrossover(Chromosome a, Chromosome b)
@@ -209,11 +210,11 @@ namespace RobbyGeneticAlgo
             //storing the first set of allele
             for (int i = 0; i < firstSet.Length; i++)
             {
-                if (i <= half1)
-                {
-                    firstSet[i] = a[i];
-                }
-                else if (i > half1 && i <= half2)
+                //if (i <= half1)
+                //{
+                //    firstSet[i] = a[i];
+                //}
+                if (i > half1 && i <= half2)
                 {
                     firstSet[i] = b[i];
                 }
@@ -228,11 +229,11 @@ namespace RobbyGeneticAlgo
             //storing the second set of allele
             for (int i = 0; i < secondSet.Length; i++)
             {
-                if (i <= half1)
-                {
-                    secondSet[i] = b[i];
-                }
-                else if (i > half1 && i <= half2)
+                //if (i <= half1)
+                //{
+                //    secondSet[i] = b[i];
+                //}
+                if (i > half1 && i <= half2)
                 {
                     secondSet[i] = a[i];
                 }
@@ -298,6 +299,30 @@ namespace RobbyGeneticAlgo
             children[1] = new Chromosome(secondSet);
 
             return children;
+        }
+
+        /// <summary>
+        /// Method provides a constant level of fitness
+        /// to the chromosome
+        /// Testing purposes only
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public double ConstantFitness(Chromosome c)
+        {
+            return 5;
+        }
+
+        /// <summary>
+        /// Method provides a random level of fitness
+        /// to a chromosome
+        /// //Testing purposes only
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public double RandomFitness(Chromosome c)
+        {
+            return Helpers.rand.Next(0, 1000);
         }
     }
 }

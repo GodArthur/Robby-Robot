@@ -41,6 +41,7 @@ namespace RobbyGeneticAlgo
             this.currentG = new Generation(this.popSize, this.numGenes);
             for (int i = 0; i < numGenerations; i++)
             {
+
                 this.EvalFitness(this.RobbyFitness);
                 this.GenerationReplaced(i + 1, this.currentG);
                 this.generateNextGeneration();
@@ -88,6 +89,7 @@ namespace RobbyGeneticAlgo
             for(int i = 0; i < this.contents.Length; i++)
             {
                 fitnessOfChro += Helpers.RunRobbyInGrid(this.contents[i], c, this.numActions, Helpers.ScoreForAllele);
+
             }
 
             return fitnessOfChro / this.contents.Length;

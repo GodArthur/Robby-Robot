@@ -52,7 +52,6 @@
     <Compile Include="DirectionContents.cs" />
     <Compile Include="Generation.cs" />
     <Compile Include="Helpers.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RobbyRobotProblem.cs" />
   </ItemGroup>

@@ -57,7 +57,11 @@ namespace RobbyGeneticAlgoUnitTests
         [TestMethod]
         public void TestEvalFitness()
         {
-            Chromosome c = new Chromosome(4);
+            Chromosome c = new Chromosome(5);
+
+            c.EvalFitness(c.ConstantFitness);
+
+            Assert.AreEqual(5.0, c.Fitness);
         }
 
 
@@ -389,11 +393,34 @@ namespace RobbyGeneticAlgoUnitTests
             Assert.IsTrue(c.ToString().Equals(geneString));
         }
 
-
         [TestMethod]
         public void TestCompareTo()
         {
+            Chromosome[] c = new Chromosome[10];
 
+            for (int i = 0; i < c.Length; i++)
+            {
+                c[i] = new Chromosome(10);
+                c[i].EvalFitness(c[i].RandomFitness);
+            }
+
+            bool sortedDescending = true;
+
+            Array.Sort(c);
+
+            for (int i = 0; i < c.Length; i++)
+            {
+                if (i + 1 != c.Length)
+                {
+                    if (c[i].Fitness < c[i + 1].Fitness)
+                    {
+                        sortedDescending = false;
+                        break;
+                    }
+                }
+            }
+
+            Assert.IsTrue(sortedDescending);
         }
 
     }
