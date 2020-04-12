@@ -59,7 +59,6 @@ namespace Game1
                  Allele[] pattern = null;
                  population[i] = storeGeneration(pattern, files[i]);
              }*/
-            contents.GetLength(0);
         
             robPosition = new int[]{ Helpers.rand.Next(0, contents.GetLength(0)), Helpers.rand.Next(0, contents.GetLength(0))};
 
@@ -143,9 +142,7 @@ namespace Game1
 
             }
          
-            
-            
-            spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
+            //spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
 
             spriteBatch.End();
 
