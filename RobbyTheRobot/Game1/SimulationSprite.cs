@@ -24,6 +24,14 @@ namespace Game1
         private Texture2D canImg;
         private Texture2D lineImg;
 
+        private Allele[] gen1;
+        private Allele[] gen20;
+        private Allele[] gen100;
+        private Allele[] gen200;
+        private Allele[] gen500;
+        private Allele[] gen1000;
+
+
         //private SpriteFont spriteFont;
         private Contents[,] contents;
 
@@ -44,6 +52,15 @@ namespace Game1
 
             contents = Helpers.GenerateRandomTestGrid(10);
 
+            
+
+            String[] gen = File.ReadAllText().Split(',');
+
+            for (int i = 1; i <= 6; i++)
+            {
+                
+            }
+
             base.Initialize();
 
         }
@@ -56,6 +73,8 @@ namespace Game1
             this.tileImg = game.Content.Load<Texture2D>("tile");
             this.robotImg = game.Content.Load<Texture2D>("robby");
             this.lineImg = game.Content.Load<Texture2D>("pokeball");
+            
+            //gen = File.ReadAllLines
             //this.spriteFont = this.game.Content.Load<SpriteFont>("scoreFont");
 
             base.LoadContent();
@@ -120,6 +139,19 @@ namespace Game1
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        public Chromosome storeGeneration(Allele[] pattern, string path)
+        {
+            String[] gen = File.ReadAllText(path).Split(',');
+            pattern = new Allele[gen.Length];
+
+            for (int i = 0; i < gen.Length; i++)
+            {
+                pattern[i] = (Allele)Enum.Parse(typeof(Allele), gen[i]);
+            }
+
+            return new Chromosome(pattern);
         }
     }
 
