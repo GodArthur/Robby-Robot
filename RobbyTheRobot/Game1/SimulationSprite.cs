@@ -23,12 +23,13 @@ namespace Game1
         private Texture2D tileImg;
         private Texture2D canImg;
         private Texture2D lineImg;
+        private SpriteFont spriteFont;
+
+        private Chromosome[] allGenerations;
+        private int genNumber;
+
+
         
-
-        private Chromosome[] population;
-
-
-        //private SpriteFont spriteFont;
         private Contents[,] contents;
 
         private int count;
@@ -41,6 +42,7 @@ namespace Game1
         {
             this.game = game;
             this.count = 0;
+            this.genNumber = 0;
 
         }
 
@@ -50,15 +52,17 @@ namespace Game1
 
             contents = Helpers.GenerateRandomTestGrid(10);
 
-            /* string[] files = Directory.GetFiles("output");
+            allGenerations = new Chromosome[6];
 
-             population = new Chromosome[files.Length];
 
-             for (int i = 1; i < population.Length; i++)
-             {
-                 Allele[] pattern = null;
-                 population[i] = storeGeneration(pattern, files[i]);
-             }*/
+
+            String[] allFiles = Directory.GetFiles("../../../../../RobbyGeneticAlgo/GenOutputs");
+
+            for (int i = 0; i < allFiles.Length; i++)
+            {
+                allGenerations[i] = storeGeneration(allFiles[i]);
+            }
+
         
             robPosition = new int[]{ Helpers.rand.Next(0, contents.GetLength(0)), Helpers.rand.Next(0, contents.GetLength(0))};
 
@@ -83,12 +87,18 @@ namespace Game1
 
         public override void Update(GameTime gameTime)
         {
+            if (count == 200)
+            {
+                count = 0;
+                genNumber++;
+                contents = Helpers.GenerateRandomTestGrid(10);
+            }
 
-            score += Helpers.ScoreForAllele(new Chromosome(200), contents, ref robPosition[0], ref robPosition[1]);
-
-            count++;
-
-
+            if (genNumber < allGenerations.Length)
+            {     
+                score += Helpers.ScoreForAllele(allGenerations[genNumber], contents, ref robPosition[0], ref robPosition[1]);
+                count++;
+            }
 
             base.Update(gameTime);
         }
@@ -99,7 +109,7 @@ namespace Game1
             // or set them
             int x = 0; //Helpers.rand.Next(0, 10);
             int y = 0; //Helpers.rand.Next(0, 10);
-            
+
             spriteBatch.Begin();
 
             for (int i = 0; i < contents.GetLength(0); i++)
@@ -119,13 +129,13 @@ namespace Game1
             {
                 for (int j = 0; j < contents.GetLength(1); j++)
                 {
-                    Contents content = contents[i,j];
+                    Contents content = contents[i, j];
 
                     switch (content)
                     {
                         case Contents.Empty:
 
-                            //spriteBatch.Draw(tileImg, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
+                            spriteBatch.Draw(tileImg, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
                             x++;
                             break;
 
@@ -141,18 +151,21 @@ namespace Game1
                 x = 0;
 
             }
-         
-            //spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
+
+            if (gameTime.ElapsedGameTime.TotalSeconds < 2)
+            { 
+                spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
+            }
 
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
-        public Chromosome storeGeneration(Allele[] pattern, string path)
+        public Chromosome storeGeneration(string path)
         {
             String[] gen = File.ReadAllText(path).Split(',');
-            pattern = new Allele[gen.Length];
+            Allele[] pattern = new Allele[gen.Length];
 
             for (int i = 0; i < gen.Length; i++)
             {
