@@ -135,7 +135,7 @@ namespace RobbyGeneticAlgo
             {
                 if (i < gene.Length - 1)
                 {
-                    content += gene[i] + ", ";
+                    content += gene[i] + ",";
                 }
                 else
                 {
