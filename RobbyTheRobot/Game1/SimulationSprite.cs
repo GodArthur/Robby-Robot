@@ -39,7 +39,6 @@ namespace Game1
         private int[] robPosition;
 
 
-
         public SimulationSprite(Game1 game) : base(game)
         {
             this.game = game;
@@ -89,7 +88,7 @@ namespace Game1
 
         public override void Update(GameTime gameTime)
         {
-            if (time > 1)
+            if (time > 0.05)
             {
                 if (count == 200)
                 {
@@ -120,6 +119,7 @@ namespace Game1
             int x = 0; //Helpers.rand.Next(0, 10);
             int y = 0; //Helpers.rand.Next(0, 10);
 
+
             spriteBatch.Begin();
 
             for (int i = 0; i < contents.GetLength(0); i++)
@@ -139,7 +139,7 @@ namespace Game1
             {
                 for (int j = 0; j < contents.GetLength(1); j++)
                 {
-                    Contents content = contents[i, j];
+                    Contents content = contents[j, i];
 
                     switch (content)
                     {
@@ -164,7 +164,6 @@ namespace Game1
 
             
                 spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
-            //}
 
             spriteBatch.End();
 

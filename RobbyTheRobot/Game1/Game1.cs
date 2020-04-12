@@ -33,7 +33,7 @@ namespace Game1
             robbySprite = new SimulationSprite(this);
             Components.Add(robbySprite);
             graphics.PreferredBackBufferHeight = 500;
-            graphics.PreferredBackBufferWidth = 500;
+            graphics.PreferredBackBufferWidth = 320;
             graphics.ApplyChanges();
 
 
