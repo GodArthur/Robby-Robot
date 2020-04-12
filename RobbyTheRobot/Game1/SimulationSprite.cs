@@ -25,6 +25,8 @@ namespace Game1
         private Texture2D lineImg;
         private SpriteFont spriteFont;
 
+        private double time;
+
         private Chromosome[] allGenerations;
         private int genNumber;
 
@@ -43,7 +45,7 @@ namespace Game1
             this.game = game;
             this.count = 0;
             this.genNumber = 0;
-
+            this.time = 0;
         }
 
         public override void Initialize()
@@ -87,18 +89,26 @@ namespace Game1
 
         public override void Update(GameTime gameTime)
         {
-            if (count == 200)
+            if (time > 1)
             {
-                count = 0;
-                genNumber++;
-                contents = Helpers.GenerateRandomTestGrid(10);
+                if (count == 200)
+                {
+                    count = 0;
+                    genNumber++;
+                    contents = Helpers.GenerateRandomTestGrid(10);
+                }
+
+                if (genNumber < allGenerations.Length)
+                {
+                    score += Helpers.ScoreForAllele(allGenerations[genNumber], contents, ref robPosition[0], ref robPosition[1]);
+                    count++;
+                }
+
+                time = 0;
             }
 
-            if (genNumber < allGenerations.Length)
-            {     
-                score += Helpers.ScoreForAllele(allGenerations[genNumber], contents, ref robPosition[0], ref robPosition[1]);
-                count++;
-            }
+            time += gameTime.ElapsedGameTime.TotalSeconds;
+
 
             base.Update(gameTime);
         }
@@ -152,10 +162,9 @@ namespace Game1
 
             }
 
-            if (gameTime.ElapsedGameTime.TotalSeconds < 2)
-            { 
+            
                 spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
-            }
+            //}
 
             spriteBatch.End();
 
