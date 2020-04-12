@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using RobbyGeneticAlgo;
 using GeneticAlgo;
 using System.IO;
-
+using System.Threading;
 
 namespace Game1
 {
@@ -30,6 +30,7 @@ namespace Game1
         private Chromosome[] allGenerations;
         private int genNumber;
 
+        String[] stringGens;
 
         
         private Contents[,] contents;
@@ -50,19 +51,30 @@ namespace Game1
 
         public override void Initialize()
         {
-            //RobbyRobotProblem robby = new RobbyRobotProblem(4000, 200, Helpers.ScoreForAllele);
 
-            contents = Helpers.GenerateRandomTestGrid(10);
+            this.contents = Helpers.GenerateRandomTestGrid(10);
+            this.allGenerations = new Chromosome[6];
+            this.stringGens = new String[6];
 
-            allGenerations = new Chromosome[6];
-
-
-
+            //this is just to order the files
             String[] allFiles = Directory.GetFiles("../../../../../RobbyGeneticAlgo/GenOutputs");
+            String temp = allFiles[1];
+            allFiles[1] = allFiles[3];
+            allFiles[3] = temp;
+            temp = allFiles[2];
+            allFiles[2] = allFiles[3];
+            allFiles[3] = temp;
+            allFiles[3] = allFiles[4];
+            allFiles[4] = temp;
+            allFiles[4] = allFiles[5];
+            allFiles[5] = temp;
 
             for (int i = 0; i < allFiles.Length; i++)
             {
                 allGenerations[i] = storeGeneration(allFiles[i]);
+                int startIndex = allFiles[i].IndexOf('n', 40) + 1;
+                int endIndex = allFiles[i].IndexOf('.', 20) - startIndex;
+                this.stringGens[i] = allFiles[i].Substring(startIndex, endIndex);
             }
 
         
@@ -88,19 +100,24 @@ namespace Game1
 
         public override void Update(GameTime gameTime)
         {
-            if (time > 0.5)
+            if (time > 0.1)
             {
                 if (count == 200)
                 {
                     count = 0;
                     genNumber++;
                     contents = Helpers.GenerateRandomTestGrid(10);
+                    this.score = 0;
                 }
 
                 if (genNumber < allGenerations.Length)
                 {
                     score += Helpers.ScoreForAllele(allGenerations[genNumber], contents, ref robPosition[0], ref robPosition[1]);
                     count++;
+                }
+                else
+                {
+
                 }
 
                 time = 0;
@@ -114,8 +131,6 @@ namespace Game1
 
         public override void Draw(GameTime gameTime)
         {
-            //Not sure if I should choose random values
-            // or set them
             int x = 0; //Helpers.rand.Next(0, 10);
             int y = 0; //Helpers.rand.Next(0, 10);
 
@@ -165,8 +180,12 @@ namespace Game1
                 spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
             //}
 
-            String text = "Current generation: " + (this.genNumber + 1) + " at move: " + this.count + ".";
+            String text = "Current generation: " + this.stringGens[this.genNumber] + " at move: " + this.count + ". Current Score: " + this.score;
             this.spriteBatch.DrawString(this.spriteFont, text, new Vector2(50, 400), Color.AliceBlue);
+            if(this.count == 200)
+            {
+                Thread.Sleep(5000);
+            }
 
 
             spriteBatch.End();

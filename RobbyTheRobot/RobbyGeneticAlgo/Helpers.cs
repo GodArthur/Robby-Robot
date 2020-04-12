@@ -222,7 +222,6 @@ namespace GeneticAlgo
             //find the move
             Allele move = c[gene];
 
-            Debug.WriteLine(gene + ": " + c[gene]);
             bool done;
             do
             {
