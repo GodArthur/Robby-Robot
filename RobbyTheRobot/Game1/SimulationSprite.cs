@@ -25,7 +25,8 @@ namespace Game1
         private Texture2D lineImg;
         
 
-        private Chromosome[] population;
+        private Chromosome[] allGenerations;
+        private int genNumber;
 
 
         //private SpriteFont spriteFont;
@@ -41,6 +42,7 @@ namespace Game1
         {
             this.game = game;
             this.count = 0;
+            this.genNumber = 0;
 
         }
 
@@ -50,16 +52,16 @@ namespace Game1
 
             contents = Helpers.GenerateRandomTestGrid(10);
 
-            /* string[] files = Directory.GetFiles("output");
+            allGenerations = new Chromosome[6];
 
-             population = new Chromosome[files.Length];
 
-             for (int i = 1; i < population.Length; i++)
-             {
-                 Allele[] pattern = null;
-                 population[i] = storeGeneration(pattern, files[i]);
-             }*/
-            contents.GetLength(0);
+            String[] allFiles = Directory.GetFiles("../../../../../RobbyGeneticAlgo/GenOutputs");
+
+            for (int i = 0; i < allFiles.Length; i++)
+            {
+                allGenerations[i] = storeGeneration(allFiles[i]);
+            }
+
         
             robPosition = new int[]{ Helpers.rand.Next(0, contents.GetLength(0)), Helpers.rand.Next(0, contents.GetLength(0))};
 
@@ -152,10 +154,10 @@ namespace Game1
             base.Draw(gameTime);
         }
 
-        public Chromosome storeGeneration(Allele[] pattern, string path)
+        public Chromosome storeGeneration(string path)
         {
             String[] gen = File.ReadAllText(path).Split(',');
-            pattern = new Allele[gen.Length];
+            Allele[] pattern = new Allele[gen.Length];
 
             for (int i = 0; i < gen.Length; i++)
             {
