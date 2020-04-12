@@ -86,8 +86,12 @@ namespace Game1
 
         public override void Update(GameTime gameTime)
         {
-
-            score += Helpers.ScoreForAllele(new Chromosome(200), contents, ref robPosition[0], ref robPosition[1]);
+            if(count == 200)
+            {
+                genNumber++;
+                count = 0;
+            }
+            score += Helpers.ScoreForAllele(allGenerations[genNumber], contents, ref robPosition[0], ref robPosition[1]);
 
             count++;
 
