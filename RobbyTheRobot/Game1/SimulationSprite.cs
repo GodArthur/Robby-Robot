@@ -23,14 +23,18 @@ namespace Game1
         private Texture2D tileImg;
         private Texture2D canImg;
         private Texture2D lineImg;
+        
 
         private Chromosome[] allGenerations;
         private int genNumber;
+
 
         //private SpriteFont spriteFont;
         private Contents[,] contents;
 
         private int count;
+        private int score;
+        private int[] robPosition;
 
 
 
@@ -58,6 +62,9 @@ namespace Game1
                 allGenerations[i] = storeGeneration(allFiles[i]);
             }
 
+        
+            robPosition = new int[]{ Helpers.rand.Next(0, contents.GetLength(0)), Helpers.rand.Next(0, contents.GetLength(0))};
+
             base.Initialize();
 
         }
@@ -79,7 +86,8 @@ namespace Game1
 
         public override void Update(GameTime gameTime)
         {
-            
+
+            score += Helpers.ScoreForAllele(new Chromosome(200), contents, ref robPosition[0], ref robPosition[1]);
 
             count++;
 
@@ -101,13 +109,26 @@ namespace Game1
             {
                 for (int j = 0; j < contents.GetLength(1); j++)
                 {
+                    spriteBatch.Draw(tileImg, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
+                    x++;
+                }
+                y++;
+                x = 0;
+            }
+
+            x = 0; y = 0;
+
+            for (int i = 0; i < contents.GetLength(0); i++)
+            {
+                for (int j = 0; j < contents.GetLength(1); j++)
+                {
                     Contents content = contents[i,j];
 
                     switch (content)
                     {
                         case Contents.Empty:
 
-                            spriteBatch.Draw(tileImg, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
+                            //spriteBatch.Draw(tileImg, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
                             x++;
                             break;
 
@@ -117,21 +138,16 @@ namespace Game1
                             x++;
                             break;
 
-                        case Contents.Wall:
-
-                            spriteBatch.Draw(lineImg, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
-                            x++;
-                            break;
-
                     }
                 }
                 y++;
                 x = 0;
+
             }
          
- 
             
-            //spriteBatch.Draw(canImg, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
+            
+            spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
 
             spriteBatch.End();
 
