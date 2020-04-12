@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RobbyGeneticAlgo;
+using System.Diagnostics;
 
 namespace GeneticAlgo
 {
@@ -220,6 +221,8 @@ namespace GeneticAlgo
             int gene = Helpers.FindGeneIndex(dir);
             //find the move
             Allele move = c[gene];
+
+            Debug.WriteLine(gene + ": " + c[gene]);
             bool done;
             do
             {
