@@ -32,7 +32,7 @@ namespace Game1
             // TODO: Add your initialization logic here
             robbySprite = new SimulationSprite(this);
             Components.Add(robbySprite);
-            graphics.PreferredBackBufferHeight = 500;
+            graphics.PreferredBackBufferHeight = 620;
             graphics.PreferredBackBufferWidth = 500;
             graphics.ApplyChanges();
 
@@ -85,7 +85,7 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.LightCoral);
+            GraphicsDevice.Clear(Color.TransparentBlack);
 
 
             
