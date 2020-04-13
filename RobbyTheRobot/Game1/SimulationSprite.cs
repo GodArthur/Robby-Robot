@@ -41,6 +41,8 @@ namespace Game1
         private int numCans;
         private int[] robPosition;
 
+        private Boolean isFinished = false;
+
 
         public SimulationSprite(Game1 game) : base(game)
         {
@@ -103,10 +105,16 @@ namespace Game1
 
         public override void Update(GameTime gameTime)
         {
+            if(this.isFinished)
+            {
+                Thread.Sleep(3000);
+                Environment.Exit(0);
+            }
 
-            if (time < 0.1)
+            if (time > 0.075)
 
             {
+                
                 if (genNumber < allGenerations.Length)
                 {
                     //bool cansLeft;
@@ -115,12 +123,17 @@ namespace Game1
                     //{
                       //  for (int j = 0; j < contents.GetLength)
                     //}
-                    if (count > 200 )
+                    if(count == 200 && genNumber == allGenerations.Length - 1)
+                    {
+                        this.isFinished = true;
+                    }
+                    else if (count > 200)
                     {
                         count = 0;
                         genNumber++;
-                        contents = Helpers.GenerateRandomTestGrid(10);
+                        this.contents = Helpers.GenerateRandomTestGrid(10);
                         this.score = 0;
+                        this.robPosition = new int[] { Helpers.rand.Next(0, contents.GetLength(0)), Helpers.rand.Next(0, contents.GetLength(0)) };
 
                     }
                     else
@@ -147,7 +160,7 @@ namespace Game1
 
             spriteBatch.Begin();
 
-            if (genNumber < allGenerations.Length)
+            if (!this.isFinished)
             {
                 numCans = 0;
 
@@ -202,7 +215,7 @@ namespace Game1
                     this.spriteBatch.DrawString(this.spriteFont, "Points: " + this.score + "/500", new Vector2(50, 580), Color.AliceBlue);
                 }
 
-                if (this.count > 200 || numCans == 0)
+                if (this.count > 200 || (this.count > 200 && numCans == 0))
                 {
                     Thread.Sleep(2000);
                 }
@@ -212,7 +225,9 @@ namespace Game1
             {
                 //Something wrong with statement
                 //Test with and without the Env.Exit();
-                this.spriteBatch.DrawString(this.spriteFont, "The End" , new Vector2(215, 310), Color.AliceBlue);
+                Thread.Sleep(2000);
+                GraphicsDevice.Clear(Color.Black);
+                this.spriteBatch.DrawString(this.spriteFont, "The End!" , new Vector2(50, 300), Color.AliceBlue);
                 //Thread.Sleep(3000);
                 //this.spriteBatch.DrawString(this.spriteFont, "The End is near", new Vector2(215, 310), Color.AliceBlue);
                 //Environment.Exit(0);
