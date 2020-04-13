@@ -383,15 +383,19 @@ namespace RobbyGeneticAlgoUnitTests
 
         }
 
+
+
         [TestMethod]
         public void TestToString()
         {
             Chromosome c = new Chromosome(new Allele[]{Allele.North, Allele.South, Allele.East, Allele.West});
 
-            string geneString = "North, South, East, West";
+            string geneString = "North,South,East,West";
 
             Assert.IsTrue(c.ToString().Equals(geneString));
         }
+
+
 
         [TestMethod]
         public void TestCompareTo()

@@ -144,19 +144,6 @@ namespace RobbyGeneticAlgoUnitTests
 
             bool highestFitness;
 
-            //finding elem with largest fitness
-            //to compare the value returned by SelectParent()
-
-           // int index = 0;
-
-           /* for (int i = 0; i < g.GetPopulation().Length; i++)
-            {
-                if (g[index].Fitness < g[i].Fitness)
-                {
-                    index = i;
-                }
-            }*/
-
             if (test.Fitness == g[0].Fitness)
             {
                 highestFitness = true;

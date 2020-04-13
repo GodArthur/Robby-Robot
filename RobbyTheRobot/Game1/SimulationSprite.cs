@@ -156,12 +156,13 @@ namespace Game1
         {
             int x = 0; 
             int y = 0;
-            numCans = 0;
+            
 
             spriteBatch.Begin();
 
             if (!this.isFinished)
             {
+                numCans = 0;
 
                 for (int i = 0; i < contents.GetLength(0); i++)
                 {
@@ -207,11 +208,12 @@ namespace Game1
                 spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 50, robPosition[1] * 50, 50, 50), Color.White);
 
 
-
-                this.spriteBatch.DrawString(this.spriteFont, "Current generation: " + this.stringGens[this.genNumber], new Vector2(50, 540), Color.AliceBlue);
-                this.spriteBatch.DrawString(this.spriteFont, "Move: " + this.count + "/200", new Vector2(50, 560), Color.AliceBlue);
-                this.spriteBatch.DrawString(this.spriteFont, "Points: " + this.score + "/500", new Vector2(50, 580), Color.AliceBlue);
-
+                if (count <= 200)
+                {
+                    this.spriteBatch.DrawString(this.spriteFont, "Current generation: " + this.stringGens[this.genNumber], new Vector2(50, 540), Color.AliceBlue);
+                    this.spriteBatch.DrawString(this.spriteFont, "Move: " + this.count + "/200", new Vector2(50, 560), Color.AliceBlue);
+                    this.spriteBatch.DrawString(this.spriteFont, "Points: " + this.score + "/500", new Vector2(50, 580), Color.AliceBlue);
+                }
 
                 if (this.count > 200 || (this.count > 200 && numCans == 0))
                 {
