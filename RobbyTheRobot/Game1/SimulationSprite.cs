@@ -80,30 +80,36 @@ namespace Game1
             this.robotImg = game.Content.Load<Texture2D>("robby");
             this.lineImg = game.Content.Load<Texture2D>("pokeball");
             
-            //gen = File.ReadAllLines
-            //this.spriteFont = this.game.Content.Load<SpriteFont>("scoreFont");
+            this.spriteFont = this.game.Content.Load<SpriteFont>("scoreFont");
 
             base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (time > 0.05)
-            {
-                if (count == 200)
-                {
-                    count = 0;
-                    genNumber++;
-                    contents = Helpers.GenerateRandomTestGrid(10);
-                }
 
+            if (time > 0.1)
+
+            {
                 if (genNumber < allGenerations.Length)
                 {
+
+
+                    if (count == 200)
+                    {
+                        count = 0;
+                        genNumber++;
+                        contents = Helpers.GenerateRandomTestGrid(10);
+                    }
+
+
+
                     score += Helpers.ScoreForAllele(allGenerations[genNumber], contents, ref robPosition[0], ref robPosition[1]);
                     count++;
-                }
 
-                time = 0;
+
+                    time = 0;
+                }
             }
 
             time += gameTime.ElapsedGameTime.TotalSeconds;
@@ -164,6 +170,10 @@ namespace Game1
 
             
                 spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 32, robPosition[1] * 32, 32, 32), Color.White);
+
+            String text = "Current generation: " + (this.genNumber + 1) + " at move: " + this.count + ".";
+            this.spriteBatch.DrawString(this.spriteFont, text, new Vector2(50, 400), Color.AliceBlue);
+
 
             spriteBatch.End();
 
