@@ -15,8 +15,14 @@ using System.Diagnostics;
 
 namespace Game1
 {
+    /// <summary>
+    /// Authors: Andrzej Fedorowicz and Korjon Chang-Jones
+    /// Version: 2020-04-13
+    /// This class takes care of the updates and drawing for the game
+    /// </summary>
     class SimulationSprite : DrawableGameComponent
     {
+        //Instance variables needed throughout the game
         private Game1 game;
         private SpriteBatch spriteBatch;
 
@@ -26,11 +32,13 @@ namespace Game1
         private Texture2D lineImg;
         private SpriteFont spriteFont;
 
+        //Time of each instruction(each time update is called)
         private double time;
 
         private Chromosome[] allGenerations;
         private int genNumber;
 
+        //This is for outputting the generation #
         String[] stringGens;
 
         
@@ -44,6 +52,10 @@ namespace Game1
         private Boolean isFinished = false;
 
 
+        /// <summary>
+        /// Constructor sets relevant instance variables
+        /// </summary>
+        /// <param name="game">The current game</param>
         public SimulationSprite(Game1 game) : base(game)
         {
             this.game = game;
@@ -54,9 +66,12 @@ namespace Game1
             numCans = 1;
         }
 
+        /// <summary>
+        /// Initializing non-graphical components
+        /// </summary>
         public override void Initialize()
         {
-
+            //Creating the grid and loading in the generations
             this.contents = Helpers.GenerateRandomTestGrid(10);
             this.allGenerations = new Chromosome[6];
             this.stringGens = new String[6];
@@ -74,6 +89,7 @@ namespace Game1
             allFiles[4] = allFiles[5];
             allFiles[5] = temp;
 
+            //Loading the generations
             for (int i = 0; i < allFiles.Length; i++)
             {
                 allGenerations[i] = storeGeneration(allFiles[i]);
@@ -82,13 +98,16 @@ namespace Game1
                 this.stringGens[i] = allFiles[i].Substring(startIndex, endIndex);
             }
 
-        
+            //Setting robbys position
             robPosition = new int[]{ Helpers.rand.Next(0, contents.GetLength(0)), Helpers.rand.Next(0, contents.GetLength(0))};
 
             base.Initialize();
 
         }
 
+        /// <summary>
+        /// Load Content loads graphical components
+        /// </summary>
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -103,26 +122,25 @@ namespace Game1
             base.LoadContent();
         }
 
+        /// <summary>
+        /// Update updates the game state each clock cycle
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
+            //If the game is finished, it will wait and exit
             if(this.isFinished)
             {
                 Thread.Sleep(3000);
                 Environment.Exit(0);
             }
 
+            //Just so it's easier to look at robby we don't update is as fast
             if (time > 0.075)
-
             {
-                
+                //Pretty much these ifs handle whether or not the chromosome is finished and whether to calculate the fitness
                 if (genNumber < allGenerations.Length)
                 {
-                    //bool cansLeft;
-
-                    //for (int i = 0; i < contents.GetLength(0); i++)
-                    //{
-                      //  for (int j = 0; j < contents.GetLength)
-                    //}
                     if(count == 200 && genNumber == allGenerations.Length - 1)
                     {
                         this.isFinished = true;
@@ -152,18 +170,24 @@ namespace Game1
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Draw draws the game
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
+            
             int x = 0; 
             int y = 0;
             
 
             spriteBatch.Begin();
 
+            //If the game is still going on continue drawing
             if (!this.isFinished)
             {
                 numCans = 0;
-
+                //So pretty much we draw the grid full of tiles first
                 for (int i = 0; i < contents.GetLength(0); i++)
                 {
                     for (int j = 0; j < contents.GetLength(1); j++)
@@ -176,7 +200,7 @@ namespace Game1
                 }
 
                 x = 0; y = 0;
-
+                //Then we draw the tiles and cans(so the cans look on top tiles)
                 for (int i = 0; i < contents.GetLength(0); i++)
                 {
                     for (int j = 0; j < contents.GetLength(1); j++)
@@ -207,7 +231,7 @@ namespace Game1
 
                 spriteBatch.Draw(robotImg, new Rectangle(robPosition[0] * 50, robPosition[1] * 50, 50, 50), Color.White);
 
-
+                //This is for information output
                 if (count <= 200)
                 {
                     this.spriteBatch.DrawString(this.spriteFont, "Current generation: " + this.stringGens[this.genNumber], new Vector2(50, 540), Color.AliceBlue);
@@ -215,6 +239,7 @@ namespace Game1
                     this.spriteBatch.DrawString(this.spriteFont, "Points: " + this.score + "/500", new Vector2(50, 580), Color.AliceBlue);
                 }
 
+                //If the generation is done, it stops for the user to see the final result
                 if (this.count > 200 || (this.count > 200 && numCans == 0))
                 {
                     Thread.Sleep(2000);
@@ -223,14 +248,10 @@ namespace Game1
             }
             else
             {
-                //Something wrong with statement
-                //Test with and without the Env.Exit();
+                //If the game is done, an end screen is drawn
                 Thread.Sleep(2000);
                 GraphicsDevice.Clear(Color.Black);
                 this.spriteBatch.DrawString(this.spriteFont, "The End!" , new Vector2(50, 300), Color.AliceBlue);
-                //Thread.Sleep(3000);
-                //this.spriteBatch.DrawString(this.spriteFont, "The End is near", new Vector2(215, 310), Color.AliceBlue);
-                //Environment.Exit(0);
             }
 
 
@@ -239,7 +260,11 @@ namespace Game1
             base.Draw(gameTime);
         }
 
-
+        /// <summary>
+        /// This method is used to get the generation as a chromosome from the file
+        /// </summary>
+        /// <param name="path">File to get from</param>
+        /// <returns>The created chromosome</returns>
         public Chromosome storeGeneration(string path)
         {
             String[] gen = File.ReadAllText(path).Split(',');

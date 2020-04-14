@@ -34,16 +34,23 @@ namespace GeneticAlgo
 
         }
 
-        //Custom Method
-
+        /// <summary>
+        /// Displays fitness of the gen to the console
+        /// </summary>
+        /// <param name="num">Gen number</param>
+        /// <param name="gen">Current gen</param>
         public static void Display(int num, Generation gen)
         {
             Console.WriteLine("Generation number " + num + " has max fitness of: " + gen[0].Fitness);
 
         }
 
-        // Custom Method
-
+        
+        /// <summary>
+        /// Writes the best chromosomes from a select number of generations to files
+        /// </summary>
+        /// <param name="num">Gen number</param>
+        /// <param name="gen">Current gen</param>
         public static void Print(int num, Generation gen)
         {
             if(num == 1)
@@ -69,10 +76,6 @@ namespace GeneticAlgo
             else if(num == 1000)
             {
                 File.WriteAllText("../../GenOutputs/Gen1000.txt", gen[0].ToString());
-            }
-            else if(num == 4000)
-            {
-                Console.ReadLine();
             }
         }
 
@@ -180,10 +183,12 @@ namespace GeneticAlgo
         /// <returns>Rectangular array of Contents filled with 50% Cans, and 50% Empty </returns>
         public static Contents[,] GenerateRandomTestGrid(int gridSize)
         {
+            //Creating the contents array and the number of cans/empty
             Contents[,] testGrid = new Contents[gridSize, gridSize];
             int numOfCans = testGrid.Length / 2;
             int numOfEmpty = testGrid.Length - numOfCans;
 
+            //Looping through contents and assigning random enums to each index
             for(int i = 0; i < testGrid.GetLength(0); i++)
             {
                 for(int j = 0; j < testGrid.GetLength(1); j++)
