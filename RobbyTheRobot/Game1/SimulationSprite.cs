@@ -104,7 +104,7 @@ namespace Game1
         public override void Update(GameTime gameTime)
         {
 
-            if (time < 0.1)
+            if (time > 0.1)
 
             {
                 if (genNumber < allGenerations.Length)
