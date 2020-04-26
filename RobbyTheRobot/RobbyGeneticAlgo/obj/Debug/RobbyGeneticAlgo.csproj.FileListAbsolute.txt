@@ -1,0 +1,12 @@
+D:\GitProjects\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.csproj.CoreCompileInputs.cache
+D:\GitProjects\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.exe
+D:\GitProjects\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.pdb
+D:\GitProjects\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.exe.config
+D:\GitProjects\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.exe
+D:\GitProjects\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.pdb
+C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.exe.config
+C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.exe
+C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\bin\Debug\RobbyGeneticAlgo.pdb
+C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.csproj.CoreCompileInputs.cache
+C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.exe
+C:\Users\korjo\OneDrive\Documents\compSci\semester4\dotNet\teame\RobbyTheRobot\RobbyGeneticAlgo\obj\Debug\RobbyGeneticAlgo.pdb
